@@ -169,8 +169,6 @@ type VulnInfo struct {
 }
 
 // Titles returns tilte (TUI)
-func (v VulnInfo) Titles(lang, myFamily string) (values []CveContentStr) {
-	if lang == "ja" {
 		if cont, found := v.CveContents[Jvn]; found && 0 < len(cont.Title) {
 			values = append(values, CveContentStr{Jvn, cont.Title})
 		}
