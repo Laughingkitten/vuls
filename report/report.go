@@ -146,7 +146,7 @@ func FillCveInfo(dbclient DBClient, r *models.ScanResult, cpeURIs []string) erro
 	if err != nil {
 		return fmt.Errorf("Failed to fill with OVAL: %s", err)
 	}
-	util.Log.Infof("%s: %d CVEs are detected with OVAL",
+	util.Log.Infof("%s: %d CVEs are detected with OVAL Sample!!!!",
 		r.FormatServerName(), nCVEs)
 
 	for i, v := range r.ScannedCves {
