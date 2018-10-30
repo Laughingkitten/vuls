@@ -146,10 +146,12 @@ func FillCveInfo(dbclient DBClient, r *models.ScanResult, cpeURIs []string) erro
 	if err != nil {
 		return fmt.Errorf("Failed to fill with OVAL: %s", err)
 	}
-	util.Log.Infof("%s: %d CVEs are detected with OVAL Sample!!!!",
+	util.Log.Infof("%s: %d CVEs are detected with OVAL",
 		r.FormatServerName(), nCVEs)
 
 	for i, v := range r.ScannedCves {
+		fmt.Println("i : ", i)
+		fmt.Println("v : ", v)
 		for j, p := range v.AffectedPackages {
 			if p.NotFixedYet && p.FixState == "" {
 				p.FixState = "Not fixed yet"
@@ -178,6 +180,14 @@ func FillCveInfo(dbclient DBClient, r *models.ScanResult, cpeURIs []string) erro
 
 	fillCweDict(r)
 	return nil
+}
+
+func fillExploitDBInfo(r *models.ScanResult) error {
+	CVEID, err := r.ScannedCves[cve.CveID]
+	if err != nil {
+		return fmt.Errorf("Failed to fecth CVE-ID from model")
+	}
+	fmt.Println(CVEID)
 }
 
 // fillCveDetail fetches NVD, JVN from CVE Database

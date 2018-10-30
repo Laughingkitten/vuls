@@ -398,6 +398,8 @@ func (p *ReportCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{}
 			util.Log.Error(err)
 			return subcommands.ExitFailure
 		}
+
+		if exploitres, err := report.FillE
 	}
 
 	for _, w := range reports {
@@ -406,6 +408,7 @@ func (p *ReportCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{}
 			return subcommands.ExitFailure
 		}
 	}
+
 
 	return subcommands.ExitSuccess
 }
